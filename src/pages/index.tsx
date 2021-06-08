@@ -26,7 +26,7 @@ export default function Home() {
               name="email"
               id="email"
               type="email"
-              focusBorderColor="pink.500"
+              focusBorderColor="blue.500"
               bgColor="gray.900"
               variant="filled"
               _hover={{ bgColor: 'gray.900' }}
@@ -39,7 +39,7 @@ export default function Home() {
               name="password"
               id="password"
               type="password"
-              focusBorderColor="pink.500"
+              focusBorderColor="blue.500"
               bgColor="gray.900"
               variant="filled"
               _hover={{ bgColor: 'gray.900' }}
