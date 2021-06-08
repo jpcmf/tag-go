@@ -1,6 +1,6 @@
 # Tag go
 
-## Techs
+## Tools
 
 - [Node.js](https://nodejs.org/en/)
 - [Next.js](https://nextjs.org/)
