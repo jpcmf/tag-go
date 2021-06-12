@@ -1,4 +1,4 @@
-import { Box, Stack, Text, Link, Icon, Flex } from '@chakra-ui/react';
+import { Box, Stack, Text, Link, Icon } from '@chakra-ui/react';
 import {
   RiContactsLine,
   RiDashboardLine,
