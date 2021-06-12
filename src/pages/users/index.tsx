@@ -33,12 +33,10 @@ export default function UserList() {
             </Heading>
 
             <Button
-              as="a"
               size="sm"
               fontSize="sm"
               colorScheme="blue"
               leftIcon={<Icon as={RiAddLine} fontSize="20" />}
-              cursor="pointer"
             >
               Criar novo
             </Button>

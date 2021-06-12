@@ -21,9 +21,7 @@ const options = {
   dataLabels: {
     enabled: false,
   },
-  stroke: {
-    curve: 'smooth',
-  },
+  stroke: {},
   tooltip: {
     enabled: true,
   },
