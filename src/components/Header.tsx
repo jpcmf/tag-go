@@ -72,14 +72,14 @@ export function Header() {
 
         <Flex align="center">
           <Box mr="4" textAlign="right">
-            <Text>João Paulo Fricks</Text>
+            <Text>João Paulo</Text>
             <Text color="gray.600" fontSize="small">
-              jpfricks@gmail.com
+              email@gmail.com
             </Text>
           </Box>
           <Avatar
             size="md"
-            name="João Paulo Fricks"
+            name="João Paulo"
             src="https://github.com/jpcmf.png"
           />
         </Flex>

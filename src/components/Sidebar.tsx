@@ -3,7 +3,9 @@ import {
   RiContactsLine,
   RiDashboardLine,
   RiGitMergeLine,
+  RiHeartLine,
   RiInputMethodLine,
+  RiSyringeLine,
 } from 'react-icons/ri';
 
 export function Sidebar() {
@@ -32,8 +34,21 @@ export function Sidebar() {
                 Usuários
               </Text>
             </Link>
+            <Link display="flex" align="center">
+              <Icon as={RiSyringeLine} fontSize="20" color="blue.400" />
+              <Text ml="4" fontWeight="medium">
+                Vacinação
+              </Text>
+            </Link>
+            <Link display="flex" align="center">
+              <Icon as={RiHeartLine} fontSize="20" color="blue.400" />
+              <Text ml="4" fontWeight="medium">
+                HealthCheck
+              </Text>
+            </Link>
           </Stack>
         </Box>
+
         <Box>
           <Text
             textTransform="uppercase"
@@ -42,6 +57,31 @@ export function Sidebar() {
             fontSize="small"
           >
             Automação
+          </Text>
+          <Stack spacing="4" mt="8" align="stretch">
+            <Link display="flex" align="center">
+              <Icon as={RiInputMethodLine} fontSize="20" color="blue.400" />
+              <Text ml="4" fontWeight="medium">
+                Formulários
+              </Text>
+            </Link>
+            <Link display="flex" align="center">
+              <Icon as={RiGitMergeLine} fontSize="20" color="blue.400" />
+              <Text ml="4" fontWeight="medium">
+                Automação
+              </Text>
+            </Link>
+          </Stack>
+        </Box>
+
+        <Box>
+          <Text
+            textTransform="uppercase"
+            fontWeight="bold"
+            color="gray.400"
+            fontSize="small"
+          >
+            Interop
           </Text>
           <Stack spacing="4" mt="8" align="stretch">
             <Link display="flex" align="center">
