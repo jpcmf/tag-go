@@ -1,10 +1,15 @@
-import { Flex } from '@chakra-ui/react';
+import { Flex, useBreakpointValue } from '@chakra-ui/react';
 import { Logo } from './Logo';
 import { Notification } from './Notification';
 import { Profile } from './Profile';
 import { Search } from './Search';
 
 export function Header() {
+  const isVisible = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Flex
       as="header"
@@ -16,13 +21,13 @@ export function Header() {
       align="center"
       px="6"
     >
-      <Logo />
+      <Logo showLogoData={isVisible} />
 
-      <Search />
+      {isVisible && <Search />}
 
       <Flex align="center" ml="auto">
         <Notification />
-        <Profile />
+        <Profile showProfileData={isVisible} />
       </Flex>
     </Flex>
   );
