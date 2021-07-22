@@ -12,6 +12,7 @@ import {
   Td,
   Checkbox,
   Text,
+  useBreakpointValue,
 } from '@chakra-ui/react';
 import { RiAddLine, RiPencilLine } from 'react-icons/ri';
 import { Header } from '../../components/Header';
@@ -19,6 +20,11 @@ import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
 
 export default function UserList() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Box>
       <Header />
@@ -45,17 +51,17 @@ export default function UserList() {
           <Table colorScheme="whiteAlpha">
             <Thead>
               <Tr>
-                <Th px="6" color="gray.300" width="8">
+                <Th px="{['4','4','6']}" color="gray.300" width="8">
                   <Checkbox colorScheme="blue" />
                 </Th>
                 <Th>Usuário</Th>
-                <Th>Data de cadastro</Th>
+                {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th w="16"></Th>
               </Tr>
             </Thead>
             <Tbody>
               <Tr>
-                <Td px="6">
+                <Td px="{['4','4','6']}">
                   <Checkbox colorScheme="blue" />
                 </Td>
                 <Td>
@@ -66,9 +72,11 @@ export default function UserList() {
                     </Text>
                   </Box>
                 </Td>
-                <Td>
-                  <Text>12 de Junho de 2021</Text>
-                </Td>
+                {isWideVersion && (
+                  <Td>
+                    <Text>12 de Junho de 2021</Text>
+                  </Td>
+                )}
                 <Td>
                   <Button
                     as="a"
@@ -83,7 +91,7 @@ export default function UserList() {
               </Tr>
 
               <Tr>
-                <Td px="6">
+                <Td px="{['4','4','6']}">
                   <Checkbox colorScheme="blue" />
                 </Td>
                 <Td>
@@ -94,9 +102,11 @@ export default function UserList() {
                     </Text>
                   </Box>
                 </Td>
-                <Td>
-                  <Text>12 de Junho de 2021</Text>
-                </Td>
+                {isWideVersion && (
+                  <Td>
+                    <Text>12 de Junho de 2021</Text>
+                  </Td>
+                )}
                 <Td>
                   <Button
                     as="a"
