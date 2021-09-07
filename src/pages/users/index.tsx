@@ -18,16 +18,16 @@ import {
 } from '@chakra-ui/react';
 import { RiAddLine, RiErrorWarningFill, RiPencilLine } from 'react-icons/ri';
 import { useQuery } from 'react-query';
+import { api } from '../../services/api';
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { Pagination } from '../../components/Pagination';
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading, isFetching, error } = useQuery(
     'users',
     async () => {
-      const response = await fetch('http://localhost:3000/api/users');
-      const data = await response.json();
+      const { data } = await api.get('users');
 
       const users = data.users.map((user) => {
         return {
@@ -44,7 +44,7 @@ export default function UserList() {
 
       return users;
     },
-    { staleTime: 10000 * 5 }
+    { staleTime: 1000 * 60 }
   );
 
   // console.log(data);
@@ -65,6 +65,9 @@ export default function UserList() {
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">
               Usuários
+              {!isLoading && isFetching && (
+                <Spinner size="sm" color="gray.500" ml="4" />
+              )}
             </Heading>
             <Link href="/users/create" passHref>
               <Button
