@@ -11,3 +11,7 @@
 - [React Query](https://react-query.tanstack.com/)
 
 ## Changelog
+
+### 2023
+
+2023-03-04 - Add and configure `next-auth` to handle with authentication [#33](https://github.com/jpcmf/portfolio-remix-netlify/pull/33) _(v0.1.3)_
