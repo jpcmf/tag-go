@@ -2,7 +2,6 @@ import NextAuth, { DefaultSession } from 'next-auth';
 
 declare module 'next-auth' {
   interface Session {
-    // session: { id?: string | undefined } & DefaultSession['session'];
     id?: any & DefaultSession['session'];
     jwt?: any & DefaultSession['session'];
   }
