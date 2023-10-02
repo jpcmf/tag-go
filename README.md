@@ -14,4 +14,5 @@
 
 ### 2023
 
-2023-03-04 - Add and configure `next-auth` to handle with authentication [#25](https://github.com/jpcmf/tag-go/pull/25) _(v0.1.3)_
+2023-09-01 - Add and configure `next-auth` to handle with authentication [#25](https://github.com/jpcmf/tag-go/pull/25) _(v0.1.3)_
+2023-09-02 - Update `Next.js` to 13.5 and `Chakra UI` to 2.8.1 [#27](https://github.com/jpcmf/tag-go/pull/27) _(v0.1.4)_
