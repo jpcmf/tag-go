@@ -4,6 +4,7 @@ import { ApexOptions } from 'apexcharts';
 
 import { Header } from '../components/Header';
 import { Sidebar } from '../components/Sidebar';
+import { getSession } from 'next-auth/react';
 
 const Chart = dynamic(() => import('react-apexcharts'), { ssr: false });
 
@@ -86,3 +87,21 @@ export default function Dashboard() {
     </Flex>
   );
 }
+
+export const getServerSideProps = async (ctx: any) => {
+  // handle with auth session
+  const session = await getSession(ctx);
+
+  // Check if session exists or not, if not, redirect
+  if (session === null) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+};

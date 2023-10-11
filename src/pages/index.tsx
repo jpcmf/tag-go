@@ -3,6 +3,10 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Input } from '../components/Form/Input';
+import { signIn, signOut, useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 type SignInFormData = {
   email: string;
@@ -15,6 +19,8 @@ const signInFormSchema = yup.object().shape({
 });
 
 export default function SignIn() {
+  const router = useRouter();
+
   const { register, handleSubmit, formState } = useForm({
     resolver: yupResolver(signInFormSchema),
   });
@@ -22,12 +28,59 @@ export default function SignIn() {
   const { errors } = formState;
 
   const handleSignIn: SubmitHandler<SignInFormData> = async (values) => {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    console.log(values);
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+    // console.log(values);
+
+    const result = await signIn('credentials', {
+      redirect: false,
+      email: values.email,
+      password: values.password,
+    });
+
+    if (result.ok) {
+      router.replace('/dashboard');
+      return;
+    }
+
+    alert('Credenciais inválidas');
   };
 
+  //
+
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session === null) return;
+    console.log('session.jwt...', session?.jwt);
+  }, [session]);
+
   return (
-    <Flex w="100vw" h="100vh" alignItems="center" justifyContent="center">
+    <Flex
+      w="100vw"
+      h="100vh"
+      alignItems="center"
+      justifyContent="center"
+      flexDirection="column"
+    >
+      <div className="">
+        <h1>{session ? 'Authenticated' : 'Not authenticated'}</h1>
+        <div className="">
+          {session && (
+            <>
+              <h3>Session data</h3>
+              <p>E-mail: {session.user.email}</p>
+              <p>JWT from Strapi: Check console</p>
+            </>
+          )}
+        </div>
+        {session ? (
+          <button onClick={() => signOut()}>Sign out</button>
+        ) : (
+          <Link href="/auth/signin">
+            <button>Sign In</button>
+          </Link>
+        )}
+      </div>
       <Flex
         as="form"
         w="100%"
@@ -62,22 +115,47 @@ export default function SignIn() {
               dashboard
             </Text>
           </Text>
-          <Input
-            name="email"
-            id="email"
-            type="email"
-            label="E-mail"
-            {...register('email')}
-            error={errors.email}
-          />
-          <Input
-            name="password"
-            id="password"
-            type="password"
-            label="Senha"
-            {...register('password')}
-            error={errors.password}
-          />
+          <div>
+            <Input
+              name="email"
+              id="email"
+              type="email"
+              label="E-mail"
+              {...register('email')}
+              // error={errors.email}
+            />
+            <Text
+              as="small"
+              color="red.500"
+              ml="1"
+              mt="1.5"
+              display="block"
+              fontSize="smaller"
+              fontWeight="300"
+            >
+              {errors.email?.message}
+            </Text>
+          </div>
+          <div>
+            <Input
+              name="password"
+              id="password"
+              type="password"
+              label="Senha"
+              {...register('password')}
+              // error={errors.password}
+            />
+            <Text
+              as="small"
+              color="red.500"
+              ml="1"
+              mt="1.5"
+              fontSize="smaller"
+              fontWeight="300"
+            >
+              {errors.password?.message}
+            </Text>
+          </div>
         </Stack>
 
         <Button

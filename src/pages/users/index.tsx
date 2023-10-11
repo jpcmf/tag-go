@@ -64,7 +64,7 @@ export default function UserList() {
             </Heading>
             <Link href="/users/create" passHref>
               <Button
-                as="a"
+                // as="a"
                 size="sm"
                 fontSize="sm"
                 colorScheme="blue"
@@ -73,6 +73,17 @@ export default function UserList() {
                 Criar novo
               </Button>
             </Link>
+            {/* <ChakraLink
+              as={Link}
+              href="/users/create" passHref
+              as="a"
+              size="sm"
+              fontSize="sm"
+              colorScheme="blue"
+              leftIcon={<Icon as={RiAddLine} fontSize="20"}
+            >
+              Criar novo
+            </ChakraLink> */}
           </Flex>
 
           {isLoading ? (
